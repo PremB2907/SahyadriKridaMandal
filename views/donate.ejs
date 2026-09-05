@@ -1,0 +1,449 @@
+<%- include('partials/header') %>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <section class="page-hero-banner">
+    <div class="container">
+      <h1 data-i18n="donate_title">ऑनलाइन देणगी पोर्टल (८०जी कर सवलत)</h1>
+      <p style="color: var(--gold-soft); font-weight: 700; margin-top: 0.5rem;">
+        <span class="lang-mr">सह्याद्री क्रीडा मंडळ (न्यास) — नो.क्र. एफ/७६२४ (मुंबई)</span>
+        <span class="lang-en">Sahyadri Krida Mandal (Trust) — Reg. No. F/7624 (Mumbai)</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="main-content-gradient" style="padding: 4rem 0;">
+    <div class="container" style="max-width: 920px;">
+
+      <!-- Payment Mode Switcher Tabs -->
+      <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <button type="button" id="tabBtnQR" class="btn active" style="padding: 0.85rem 1.8rem; font-weight: 800; border-radius: 30px; background: linear-gradient(135deg, #7F1D1D, #450A0A); color: #FDE68A; border: 2px solid #F59E0B; cursor: pointer; box-shadow: 0 4px 15px rgba(245,158,11,0.3);">
+          <i class="fa-solid fa-qrcode" style="margin-right: 8px;"></i>
+          <span class="lang-mr">UPI QR कोड व स्क्रीनशॉट अपलोड</span>
+          <span class="lang-en">UPI QR Code & Screenshot Upload</span>
+        </button>
+
+        <button type="button" id="tabBtnGateway" class="btn" style="padding: 0.85rem 1.8rem; font-weight: 800; border-radius: 30px; background: #FFF9F0; color: #7F1D1D; border: 2px solid var(--border-gold); cursor: pointer;">
+          <i class="fa-solid fa-credit-card" style="margin-right: 8px;"></i>
+          <span class="lang-mr">कार्ड / नेटबँकिंग (Razorpay)</span>
+          <span class="lang-en">Card / NetBanking Gateway</span>
+        </button>
+      </div>
+
+      <!-- MODE 1: OFFICIAL UPI QR CODE & SCREENSHOT UPLOAD FORM -->
+      <div id="modeQR" class="card-temple" style="padding: 2.5rem; border: 2px solid var(--royal-gold);">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span style="background: rgba(245, 158, 11, 0.15); color: #7F1D1D; border: 1px solid #F59E0B; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-shield-halved" style="color: #D97706;"></i>
+            <span class="lang-mr">अधिकृत QR कोडद्वारे देणगी (८०जी पावती ईमेलवर पाठवली जाईल)</span>
+            <span class="lang-en">Official QR Payment (80G Receipt Emailed Instantly)</span>
+          </span>
+
+          <h2 style="font-size: 1.8rem; color: var(--temple-maroon); margin-top: 1rem; margin-bottom: 0.4rem;">
+            <span class="lang-mr">स्कॅन करून देणगी द्या (Scan & Pay)</span>
+            <span class="lang-en">Scan QR & Donate</span>
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            <span class="lang-mr">कोणत्याही UPI ॲपवरून (GPay, PhonePe, Paytm, BHIM) स्कॅन करा व पेमेंट झाल्यावर स्क्रीनशॉट अपलोड करा.</span>
+            <span class="lang-en">Scan via any UPI App (GPay, PhonePe, Paytm, BHIM), then upload your payment receipt screenshot below.</span>
+          </p>
+        </div>
+
+        <!-- Official QR Code Showcase Frame -->
+        <div style="background: linear-gradient(135deg, #FFF9F0, #FEF3E2); border: 2px dashed #D97706; padding: 1.8rem; border-radius: 16px; text-align: center; margin-bottom: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+          <div style="display: inline-block; background: #FFFFFF; padding: 1rem; border-radius: 12px; border: 3px solid #7F1D1D; box-shadow: 0 6px 20px rgba(127,29,29,0.15); margin-bottom: 1rem;">
+            <img src="/images/sahyadri_qr.png" alt="Sahyadri Krida Mandal Official QR Code" style="max-width: 260px; width: 100%; height: auto; display: block; border-radius: 6px;">
+          </div>
+          
+          <h4 style="color: #7F1D1D; font-size: 1.25rem; font-weight: 800; margin: 0 0 6px 0;">
+            SAHYADRI KRIDA MANDAL
+          </h4>
+          <div style="font-family: monospace; font-size: 1.15rem; font-weight: bold; color: #B45309; letter-spacing: 1px;">
+            037327011550007 14962340
+          </div>
+          <p style="font-size: 0.85rem; color: #64748B; margin-top: 6px; font-weight: 600;">
+            <i class="fa-solid fa-circle-check" style="color: #16A34A; margin-right: 4px;"></i> Accepted via Google Pay, PhonePe, Paytm, BHIM & All Banks
+          </p>
+        </div>
+
+        <!-- Manual QR Form -->
+        <form id="manualQRForm" enctype="multipart/form-data">
+          <!-- Custom Amount -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              <span class="lang-mr">देणगी दिलेली रक्कम (₹) *</span>
+              <span class="lang-en">Donated Amount (₹) *</span>
+            </label>
+            <input type="number" id="qrAmount" min="11" required placeholder="उदा. ५०१ / 1100" style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 1.1rem; font-weight: 700; color: var(--temple-maroon);">
+          </div>
+
+          <!-- Donor Name -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              <span class="lang-mr">देणगीदाराचे संपूर्ण नाव *</span>
+              <span class="lang-en">Donor Full Name *</span>
+            </label>
+            <input type="text" id="qrName" required placeholder="संपूर्ण नाव टाका | Enter Full Name" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+          </div>
+
+          <!-- Phone & Email Grid -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                <span class="lang-mr">मोबाईल नंबर *</span>
+                <span class="lang-en">Mobile Number *</span>
+              </label>
+              <input type="tel" id="qrPhone" required placeholder="१० अंकी मोबाईल नंबर" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                <span class="lang-mr">ईमेल पत्ता (PDF पावतीसाठी आवश्यक) *</span>
+                <span class="lang-en">Email Address (Required for PDF Receipt) *</span>
+              </label>
+              <input type="email" id="qrEmail" required placeholder="पावती पाठवण्यासाठी ईमेल | yourname@gmail.com" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            </div>
+          </div>
+
+          <!-- Category & Transaction UTR -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                <span class="lang-mr">सेवा प्रकार / Category</span>
+                <span class="lang-en">Seva Category</span>
+              </label>
+              <select id="qrCategory" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem; background: #FFFFFF;">
+                <option value="General Mandal Donation & Seva">सामान्य देणगी व मंडळ सेवा</option>
+                <option value="Annadan Mahaprasad Seva">अन्नदान महाप्रसाद सेवा</option>
+                <option value="Mandap & Pushpa Alankar Seva">मंडप व पुष्प अलंकार सेवा</option>
+                <option value="Modak & Prasad Seva">मोदक व प्रसाद सेवा</option>
+                <option value="Cultural & Social Work Fund">सांस्कृतिक व सामाजिक उपक्रम निधी</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                <span class="lang-mr">पेमेंट UTR / रेफरन्स नंबर (पर्यायी)</span>
+                <span class="lang-en">Payment UTR / Ref No (Optional)</span>
+              </label>
+              <input type="text" id="qrRef" placeholder="१२ अंकी UTR किंवा Txn ID" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            </div>
+          </div>
+
+          <!-- PAN Card for 80G -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              <span class="lang-mr">पॅन कार्ड नंबर (८०जी कर सवलतीसाठी पर्याय)</span>
+              <span class="lang-en">PAN Card Number (For 80G Tax Exemption)</span>
+            </label>
+            <input type="text" id="qrPan" placeholder="उदा. ABCDE1234F" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem; text-transform: uppercase;">
+          </div>
+
+          <!-- Screenshot File Upload Input -->
+          <div style="margin-bottom: 2rem; background: #FFFDF9; border: 2px dashed var(--border-gold); padding: 1.5rem; border-radius: 12px; text-align: center;">
+            <label style="display: block; font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; color: #7F1D1D;">
+              <i class="fa-solid fa-cloud-arrow-up" style="color: var(--primary-saffron); margin-right: 6px;"></i>
+              <span class="lang-mr">पेमेंट स्क्रीनशॉट अपलोड करा *</span>
+              <span class="lang-en">Upload Payment Screenshot *</span>
+            </label>
+            <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 1rem;">
+              <span class="lang-mr">जीपे / फोनपे / पेटीएम मधील यशस्वी पेमेंटचा स्क्रीनशॉट निवडा (Image Format: PNG, JPG, JPEG)</span>
+              <span class="lang-en">Select successful payment screenshot from GPay / PhonePe / Paytm (PNG, JPG)</span>
+            </p>
+            <input type="file" id="qrScreenshot" accept="image/*" required style="display: block; margin: 0 auto; max-width: 320px; font-size: 0.9rem;">
+          </div>
+
+          <button type="submit" id="btnQRSubmit" class="btn btn-primary" style="width: 100%; padding: 1.1rem; font-size: 1.1rem; font-weight: 800; background: linear-gradient(135deg, #7F1D1D, #5C0015); border: none; border-radius: 30px; box-shadow: 0 4px 18px rgba(127,29,29,0.3);">
+            <span id="btnQRText">
+              <span class="lang-mr">देणगी जमा करा व PDF पावती ईमेलवर मिळवा</span>
+              <span class="lang-en">Submit Donation & Get PDF Receipt on Email</span>
+            </span>
+            <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- MODE 2: RAZORPAY PAYMENT GATEWAY FORM -->
+      <div id="modeGateway" class="card-temple" style="padding: 2.5rem; display: none;">
+        <h2 style="font-size: 1.8rem; color: var(--temple-maroon); margin-bottom: 1.5rem; text-align: center;">
+          <span class="lang-mr">Razorpay गेटवे द्वारे ऑनलाईन देणगी</span>
+          <span class="lang-en">Online Donation via Razorpay Gateway</span>
+        </h2>
+
+        <form id="donationForm">
+          <!-- Custom Amount -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              देणगी रक्कम टाका (₹) *
+            </label>
+            <input type="number" id="donationAmount" min="11" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 1.1rem; font-weight: 700; color: var(--temple-maroon);">
+          </div>
+
+          <!-- Donor Name -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              देणगीदाराचे संपूर्ण नाव *
+            </label>
+            <input type="text" id="donorName" required placeholder="संपूर्ण नाव टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+          </div>
+
+          <!-- Contact Phone -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                मोबाईल नंबर *
+              </label>
+              <input type="tel" id="donorPhone" required placeholder="१० अंकी मोबाईल नंबर" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                ईमेल आयडी
+              </label>
+              <input type="email" id="donorEmail" placeholder="पावतीसाठी ईमेल" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            </div>
+          </div>
+
+          <!-- PAN Card -->
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              पॅन कार्ड नंबर (८०जी कर सवलत पावतीसाठी)
+            </label>
+            <input type="text" id="donorPan" placeholder="उदा. ABCDE1234F" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem; text-transform: uppercase;">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: 800;" id="btnDonateSubmit">
+            <span>देणगी द्या व पावती मिळवा</span> <i class="bi bi-shield-check"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Bank Details Section -->
+      <div class="card-temple" style="padding: 2.5rem; margin-top: 3rem;">
+        <h2 style="font-size: 1.6rem; color: var(--temple-maroon); margin-bottom: 1.5rem; text-align: center;">
+          <span>बँक खाते तपशील / Bank Account Details</span>
+        </h2>
+        
+        <div style="background: var(--bg-cream); border: 1px solid var(--border-gold); padding: 1.8rem; border-radius: var(--radius-sm); font-size: 1rem; line-height: 1.8; color: var(--text-dark);">
+          <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; border-bottom: 1px dashed var(--border-gold); padding-bottom: 0.5rem;">
+              <strong style="color: var(--temple-maroon);">बँकेचे नाव:</strong>
+              <span>SVC Co-Operative Bank Ltd.</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; border-bottom: 1px dashed var(--border-gold); padding-bottom: 0.5rem;">
+              <strong style="color: var(--temple-maroon);">खात्याचे नाव:</strong>
+              <span>Sahyadri Krida Mandal</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; border-bottom: 1px dashed var(--border-gold); padding-bottom: 0.5rem;">
+              <strong style="color: var(--temple-maroon);">खाते क्रमांक:</strong>
+              <span style="font-family: monospace; font-size: 1.15rem; font-weight: bold;">100903130041974</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; border-bottom: 1px dashed var(--border-gold); padding-bottom: 0.5rem;">
+              <strong style="color: var(--temple-maroon);">आयएफएससी कोड:</strong>
+              <span style="font-family: monospace; font-size: 1.15rem; font-weight: bold;">SVCB0000009</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; border-bottom: 1px dashed var(--border-gold); padding-bottom: 0.5rem;">
+              <strong style="color: var(--temple-maroon);">शाखा:</strong>
+              <span>Sleater Road</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle Payment Modes
+      const tabQR = document.getElementById('tabBtnQR');
+      const tabGateway = document.getElementById('tabBtnGateway');
+      const modeQR = document.getElementById('modeQR');
+      const modeGateway = document.getElementById('modeGateway');
+
+      if (tabQR && tabGateway && modeQR && modeGateway) {
+        tabQR.addEventListener('click', () => {
+          tabQR.classList.add('active');
+          tabQR.style.background = 'linear-gradient(135deg, #7F1D1D, #450A0A)';
+          tabQR.style.color = '#FDE68A';
+          tabQR.style.border = '2px solid #F59E0B';
+
+          tabGateway.classList.remove('active');
+          tabGateway.style.background = '#FFF9F0';
+          tabGateway.style.color = '#7F1D1D';
+          tabGateway.style.border = '2px solid var(--border-gold)';
+
+          modeQR.style.display = 'block';
+          modeGateway.style.display = 'none';
+        });
+
+        tabGateway.addEventListener('click', () => {
+          tabGateway.classList.add('active');
+          tabGateway.style.background = 'linear-gradient(135deg, #7F1D1D, #450A0A)';
+          tabGateway.style.color = '#FDE68A';
+          tabGateway.style.border = '2px solid #F59E0B';
+
+          tabQR.classList.remove('active');
+          tabQR.style.background = '#FFF9F0';
+          tabQR.style.color = '#7F1D1D';
+          tabQR.style.border = '2px solid var(--border-gold)';
+
+          modeGateway.style.display = 'block';
+          modeQR.style.display = 'none';
+        });
+      }
+
+      // Handle Manual QR Code Payment Submission + Screenshot Upload
+      const manualQRForm = document.getElementById('manualQRForm');
+      if (manualQRForm) {
+        manualQRForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById('btnQRSubmit');
+          const btnText = document.getElementById('btnQRText');
+          btn.disabled = true;
+          btnText.textContent = 'माहिती नोंदवली जात आहे व ईमेलवर पावती पाठवली जात आहे...';
+
+          const formData = new FormData();
+          formData.append('amount', document.getElementById('qrAmount').value);
+          formData.append('donor_name', document.getElementById('qrName').value);
+          formData.append('phone', document.getElementById('qrPhone').value);
+          formData.append('email', document.getElementById('qrEmail').value);
+          formData.append('category', document.getElementById('qrCategory').value);
+          formData.append('payment_ref', document.getElementById('qrRef').value);
+          formData.append('pan_number', document.getElementById('qrPan').value);
+
+          const screenshotInput = document.getElementById('qrScreenshot');
+          if (screenshotInput.files && screenshotInput.files[0]) {
+            formData.append('screenshot', screenshotInput.files[0]);
+          }
+
+          try {
+            const res = await fetch('/api/submit-manual-donation', {
+              method: 'POST',
+              body: formData
+            });
+
+            const data = await res.json();
+            if (data.success) {
+              alert(`🙏 ${data.message}\n\nपावती क्र: ${data.receipt_no}`);
+              window.location.href = `/download-receipt/${data.receipt_no}`;
+            } else {
+              alert(data.message || 'त्रुटी आली. कृपया पुन्हा प्रयत्न करा.');
+              btn.disabled = false;
+              btnText.textContent = 'देणगी जमा करा व PDF पावती ईमेलवर मिळवा';
+            }
+          } catch (err) {
+            console.error('Manual QR submission error:', err);
+            alert('माहिती पाठवताना त्रुटी आली. कृपया पुन्हा प्रयत्न करा.');
+            btn.disabled = false;
+            btnText.textContent = 'देणगी जमा करा व PDF पावती ईमेलवर मिळवा';
+          }
+        });
+      }
+
+      // Handle Razorpay Payment Gateway Submission
+      const donationForm = document.getElementById('donationForm');
+      if (donationForm) {
+        const amountInput = document.getElementById('donationAmount');
+
+        donationForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById('btnDonateSubmit');
+          btn.disabled = true;
+
+          const amountVal = parseFloat(amountInput.value);
+          const donorName = document.getElementById('donorName').value;
+          const donorPhone = document.getElementById('donorPhone').value;
+          const donorEmail = document.getElementById('donorEmail').value;
+          const donorPan = document.getElementById('donorPan').value;
+
+          try {
+            const orderRes = await fetch('/api/create-donation-order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ amount: amountVal })
+            });
+            const orderData = await orderRes.json();
+
+            if (!orderData.success) {
+              alert(orderData.message || 'Failed to initiate donation.');
+              btn.disabled = false;
+              return;
+            }
+
+            async function completeDonation(payId, ordId, sig) {
+              const confirmRes = await fetch('/api/confirm-donation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  receipt_no: orderData.receipt_no,
+                  donor_name: donorName,
+                  phone: donorPhone,
+                  email: donorEmail,
+                  amount: amountVal,
+                  pan_number: donorPan,
+                  payment_id: payId,
+                  order_id: ordId,
+                  signature: sig
+                })
+              });
+              const confirmData = await confirmRes.json();
+              if (confirmData.success) {
+                alert('देणगी यशस्वी झाली! तुमची अधिकृत ८०जी पावती डाउनलोड होत आहे.');
+                window.location.href = `/download-receipt/${confirmData.receipt_no}`;
+              } else {
+                alert(confirmData.message || 'Payment verification failed.');
+                btn.disabled = false;
+              }
+            }
+
+            const razorpayKey = (orderData.order && orderData.order.key_id) || '<%= typeof razorpayKeyId !== "undefined" ? razorpayKeyId : "" %>';
+
+            if (typeof window.Razorpay !== 'undefined' && razorpayKey) {
+              const options = {
+                key: razorpayKey,
+                amount: orderData.order ? orderData.order.amount : Math.round(amountVal * 100),
+                currency: 'INR',
+                name: 'Sahyadri Krida Mandal',
+                description: 'Ganeshotsav Seva Donation (80G Tax Exempt)',
+                image: '/images/sahyadri_logo_transparent.png',
+                order_id: orderData.order ? orderData.order.order_id : '',
+                prefill: {
+                  name: donorName,
+                  email: donorEmail,
+                  contact: donorPhone
+                },
+                theme: { color: '#7F1D1D' },
+                handler: function (response) {
+                  completeDonation(
+                    response.razorpay_payment_id,
+                    response.razorpay_order_id,
+                    response.razorpay_signature
+                  );
+                },
+                modal: {
+                  ondismiss: function () {
+                    btn.disabled = false;
+                  }
+                }
+              };
+
+              const rzp = new window.Razorpay(options);
+              rzp.open();
+            } else {
+              await completeDonation(
+                `pay_sim_${Date.now()}`,
+                orderData.order ? orderData.order.order_id : `order_sim_${Date.now()}`,
+                `sig_sim_${Date.now()}`
+              );
+            }
+          } catch (err) {
+            console.error('Donation error:', err);
+            alert('Error submitting donation.');
+            btn.disabled = false;
+          }
+        });
+      }
+    });
+  </script>
+
+<%- include('partials/footer') %>

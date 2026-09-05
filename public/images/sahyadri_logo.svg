@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" role="img" aria-labelledby="title desc">
+  <title id="title">Sahyadri Krida Mandal</title>
+  <desc id="desc">Red and orange editable emblem for Sahyadri Krida Mandal</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F47A20"/><stop offset="1" stop-color="#D71920"/></linearGradient>
+  </defs>
+  <rect x="8" y="8" width="684" height="204" rx="38" fill="#FFF8EC" stroke="#D71920" stroke-width="7"/>
+  <circle cx="112" cy="110" r="72" fill="url(#g)"/>
+  <path d="M78 80 C92 58, 126 58, 143 82 C150 94, 149 110, 139 120 C129 130, 127 146, 133 161" fill="none" stroke="#FFF8EC" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="104" cy="96" r="6" fill="#FFF8EC"/>
+  <circle cx="123" cy="96" r="6" fill="#FFF8EC"/>
+  <path d="M110 105 C98 121, 101 137, 114 147 C126 156, 141 151, 149 140" fill="none" stroke="#FFF8EC" stroke-width="7" stroke-linecap="round"/>
+  <text x="205" y="101" font-family="Noto Sans Devanagari, Arial, sans-serif" font-size="56" font-weight="800" fill="#D71920">सह्याद्री क्रीडा मंडळ</text>
+  <text x="205" y="154" font-family="Outfit, Arial, sans-serif" font-size="30" font-weight="700" fill="#D9682C" letter-spacing="1.5">SAHYADRI KRIDA MANDAL</text>
+</svg>

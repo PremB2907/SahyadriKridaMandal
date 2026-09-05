@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<section class="page-hero-banner">
+  <div class="container">
+    <span class="section-badge" data-i18n="schedule_badge">उत्सव कार्यसूची</span>
+    <h1 data-i18n="schedule_page_title">१० दिवसांचे गणेशोत्सव वेळापत्रक</h1>
+    <p data-i18n="schedule_page_sub">
+      दैनिक पूजा, महाआरती, भक्ती संध्या आणि विसर्जन मिरवणूक पूर्ण वेळापत्रक.
+    </p>
+  </div>
+</section>
+
+<section class="main-content-gradient" style="padding: 5rem 0;">
+  <div class="container">
+    
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <% scheduleData.forEach(evt => { %>
+        <div class="card-temple reveal-on-scroll" style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap; text-align: center;">
+          <div style="background: var(--temple-maroon); color: var(--gold-soft); padding: 1.5rem 2rem; border-radius: var(--radius-md); text-align: center; min-width: 140px; border: 2px solid var(--royal-gold);">
+            <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase;" data-i18n="label_day">दिवस</span>
+            <h2 style="font-size: 2.5rem; color: var(--gold-soft); margin: 0; line-height: 1;"><%= evt.day %></h2>
+          </div>
+
+          <div style="flex: 1; min-width: 250px; text-align: center;">
+            <h3 style="font-size: 1.6rem; color: var(--temple-maroon); margin: 0.4rem 0 0.6rem;" data-mr="<%= evt.titleMr %>" data-en="<%= evt.titleEn %>"><%= evt.titleMr %></h3>
+            
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/footer') %>

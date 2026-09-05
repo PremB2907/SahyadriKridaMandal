@@ -1,0 +1,589 @@
+<%- include('partials/header') %>
+
+<style>
+  body {
+    background-color: #F7EEF8 !important; /* Lavender Blush */
+    color: #2C2C2C !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .section-title, .m-hero-title, .m-countdown-title {
+    color: #381749 !important; /* Deep Amethyst */
+  }
+  
+  p, span:not(.lang-mr):not(.lang-en):not(.m-timer-label) {
+    color: #2C2C2C; /* Soft Charcoal */
+  }
+</style>
+
+  <!-- SECTION 3: FULL-BLEED HERO CAROUSEL -->
+  <section class="hero-carousel" id="heroCarousel">
+    <!-- Slide 1: New Idol 1 -->
+    <div class="hero-slide active">
+      <img src="/images/sahyadri-ganpati-01.jpg" alt="Sahyadri Krida Mandal Idol" class="hero-slide-bg hero-img-4" style="object-position: center 15%;">
+    </div>
+    <!-- Slide 2: New Idol 2 -->
+    <div class="hero-slide">
+      <img src="/images/sahyadri-ganpati-02.jpg" alt="Sahyadri Krida Mandal Idol" class="hero-slide-bg hero-img-5" style="object-position: center 15%;">
+    </div>
+    <!-- Slide 3: New Idol 3 -->
+    <div class="hero-slide">
+      <img src="/images/sahyadri-decoration-lights.jpg" alt="Sahyadri Krida Mandal Idol" class="hero-slide-bg hero-img-6" style="object-position: center 35%;">
+    </div>
+
+    <!-- DESKTOP / LAPTOP HERO CONTENT (STRICTLY >= 769px, 100% UNTOUCHED) -->
+    <div class="hero-desktop-content">
+      <!-- Hero Top Centered Branding at Top of Slideshow -->
+      <div class="hero-top-banner" style="position: absolute; top: 2.2rem; left: 50%; transform: translateX(-50%); z-index: 6; width: 92%; max-width: 1360px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none;">
+        <div class="hero-bg-watermark-text" aria-hidden="true" style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); z-index: 0; pointer-events: none; text-align: center; width: 100%;">SAHYADRI KRIDA MANDAL</div>
+        
+        <h1 class="hero-main-title" style="position: relative; z-index: 2; margin: 0 0 0.35rem 0; font-family: 'Outfit', 'Baloo 2', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4.5vw, 3.4rem); color: #FFFFFF; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85); line-height: 1.2; letter-spacing: 0.5px;">
+          <span class="lang-mr">सह्याद्री क्रीडा मंडळ</span>
+          <span class="lang-en">Sahyadri Krida Mandal</span>
+        </h1>
+
+        <p class="hero-sub-tag" style="position: relative; z-index: 2; margin: 0; font-family: var(--font-en-head); font-weight: 700; font-size: clamp(0.72rem, 1.8vw, 1.05rem); color: #C9A227; letter-spacing: 2.5px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); line-height: 1.4;">
+          <span class="lang-mr">गणपती सजावटीसाठी मुंबईतील सर्वात प्रसिद्ध मंडळ</span>
+          <span class="lang-en">MUMBAI'S MOST FAMOUS MANDAL FOR GANPATI DECORATIONS</span>
+        </p>
+      </div>
+
+      <!-- Hero Content Overlay (Countdown and Actions on Left, 50 Years Emblem on Right) -->
+      <div class="hero-grid-container"
+        style="position: absolute; top: 58%; left: 50%; transform: translate(-50%, -50%); z-index: 5; width: 90%; max-width: 1360px; display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
+        <div class="hero-content-left" style="max-width: 480px; width: 100%;">
+          
+          <!-- Countdown Card on Left -->
+          <div class="hero-countdown-card" id="heroCountdownCard" style="margin-bottom: 1.2rem; width: 100%;">
+            <span class="countdown-badge-pill">
+              <i class="fa-solid fa-om" style="color: var(--gold-soft); margin-right: 6px;"></i>
+              <span class="lang-mr">१२ सप्टें, सायं. ५:०० वा. - आगमन सोहळा</span>
+              <span class="lang-en">12 Sep, 5:00 PM - Grand Arrival</span>
+            </span>
+
+            <h3 class="countdown-card-title">
+              <span class="lang-mr">सह्याद्रीच्या राजाचे आगमन</span>
+              <span class="lang-en">Arrival of Sahyadri Cha Raja</span>
+            </h3>
+
+            <!-- Countdown Timer Grid -->
+            <div class="flip-clock-grid" id="flipClockGrid">
+              <div class="flip-unit-wrap">
+                <div class="flip-clock-unit" id="flipUnitDays">
+                  <span class="flip-val" id="countDays">--</span>
+                </div>
+                <span class="timer-label-txt" style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">
+                  <span class="lang-mr">दिवस</span><span class="lang-en">Days</span>
+                </span>
+              </div>
+
+              <div class="flip-unit-wrap">
+                <div class="flip-clock-unit" id="flipUnitHours">
+                  <span class="flip-val" id="countHours">--</span>
+                </div>
+                <span class="timer-label-txt" style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">
+                  <span class="lang-mr">तास</span><span class="lang-en">Hours</span>
+                </span>
+              </div>
+
+              <div class="flip-unit-wrap">
+                <div class="flip-clock-unit" id="flipUnitMins">
+                  <span class="flip-val" id="countMins">--</span>
+                </div>
+                <span class="timer-label-txt" style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">
+                  <span class="lang-mr">मिनिटे</span><span class="lang-en">Mins</span>
+                </span>
+              </div>
+
+              <div class="flip-unit-wrap">
+                <div class="flip-clock-unit" id="flipUnitSecs">
+                  <span class="flip-val" id="countSecs">--</span>
+                </div>
+                <span class="timer-label-txt" style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">
+                  <span class="lang-mr">सेकंद</span><span class="lang-en">Secs</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Grand Celebration Banner -->
+            <div id="aagmanCelebrationCard" style="display: none; padding: 1.2rem; text-align: center; background: linear-gradient(135deg, rgba(127, 29, 29, 0.95), rgba(69, 10, 10, 0.95)); border-radius: 14px; border: 2px solid #F59E0B; box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);">
+              <div style="font-size: 1.8rem; margin-bottom: 4px;">🎉 🌺 🙏</div>
+              <h4 style="color: #FDE68A; font-size: 1.25rem; font-weight: 800; margin: 0 0 6px 0;">
+                <span class="lang-mr">श्रींचे शुभागमन झाले आहे!</span>
+                <span class="lang-en">Divine Idol Has Arrived!</span>
+              </h4>
+              <p style="color: #FFFFFF; font-size: 0.92rem; font-weight: 700; margin-bottom: 12px; line-height: 1.4;">
+                <span class="lang-mr">गणपती बाप्पा मोरया! (७.५ फूट भव्य मूर्ती दर्शन सुरू)</span>
+                <span class="lang-en">Ganpati Bappa Morya! (7.5 Feet Idol Darshan Open)</span>
+              </p>
+              <a href="https://www.youtube.com/@sahyadrikridamandal.r" target="_blank" rel="noopener noreferrer" class="btn" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: #7F1D1D !important; font-weight: 800; border: none; padding: 0.6rem 1.2rem; font-size: 0.88rem; border-radius: 25px; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-play"></i>
+                <span class="lang-mr">आगमन सोहळा व दर्शन पहा</span>
+                <span class="lang-en">Watch Aagman & Live Darshan</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Buttons Aligned Directly Below Countdown Card -->
+          <div class="hero-actions hero-actions-grid" style="margin-top: 0.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; width: 100%;">
+            <a href="https://www.youtube.com/@sahyadrikridamandal.r" target="_blank" rel="noopener noreferrer"
+              class="btn hero-btn-match hero-btn-live" id="btnHeroLiveDarshan">
+              <i class="fa-solid fa-play" style="font-size: 0.85rem; margin-right: 4px;"></i>
+              <span class="lang-mr">लाईव्ह दर्शन पहा</span>
+              <span class="lang-en">Watch Live Darshan</span>
+            </a>
+
+            <a href="/donate" class="btn hero-btn-match hero-btn-donate">
+              <i class="fa-solid fa-heart" style="font-size: 0.85rem; margin-right: 4px;"></i>
+              <span class="lang-mr">देणगी द्या</span>
+              <span class="lang-en">Donate Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side Grand Glowing Suvarna Mahotsav 50 Years Emblem -->
+        <div class="hero-suvarna-right" style="display: flex; justify-content: center; align-items: center; margin-right: clamp(3rem, 7.5vw, 8.5rem); text-align: center;">
+          <img src="/images/suvarna_mahotsav_50_transparent.png" 
+               alt="५० वे वर्ष सुवर्ण महोत्सव - Sahyadri Krida Mandal" 
+               class="suvarna-grand-emblem">
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE ONLY HERO CONTENT (STRICTLY <= 768px, EXACT MATCH TO SCREENSHOT) -->
+    <div class="hero-mobile-content">
+      <!-- 1. 50 Years Suvarna Mahotsav Logo at Top Center -->
+      <img src="/images/suvarna_mahotsav_50_transparent.png" 
+           alt="५० वे वर्ष सुवर्ण महोत्सव" 
+           class="m-suvarna-img">
+
+      <!-- 2. Main Title -->
+      <h2 class="m-hero-title">
+        <span class="lang-mr">सह्याद्री क्रीडा मंडळ</span>
+        <span class="lang-en">Sahyadri Krida Mandal</span>
+      </h2>
+
+      <!-- 3. Uppercase Subtitle in Gold -->
+      <p class="m-hero-subtitle">
+        <span class="lang-mr">गणपती सजावटीसाठी मुंबईतील सर्वात प्रसिद्ध मंडळ</span>
+        <span class="lang-en">MUMBAI'S MOST FAMOUS MANDAL FOR GANPATI DECORATIONS</span>
+      </p>
+
+      <!-- 4. Two Buttons in Side-by-Side Grid -->
+      <div class="m-hero-actions">
+        <!-- Watch Live Darshan: Pill with Glowing Golden Ring -->
+        <a href="https://www.youtube.com/@sahyadrikridamandal.r" target="_blank" rel="noopener noreferrer" class="m-btn-live">
+          <span class="m-play-triangle">▶</span>
+          <span>
+            <span class="lang-mr">लाईव्ह दर्शन पहा</span>
+            <span class="lang-en">Watch Live Darshan</span>
+          </span>
+        </a>
+
+        <!-- Donate Now: Rounded Rectangle with 3D Drop Shadow -->
+        <a href="/donate" class="m-btn-donate">
+          <span>
+            <span class="lang-mr">देणगी द्या</span>
+            <span class="lang-en">Donate Now</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- 5. Countdown Card: 100% Transparent, Thin Gold Rounded Border -->
+      <div class="m-countdown-card">
+        <!-- Pill Badge -->
+        <div class="m-countdown-pill">
+          <span class="lang-mr">ॐ १२ सप्टें, सायं. ५:०० वा. - आगमन सोहळा</span>
+          <span class="lang-en">ॐ 12 SEP, 5:00 PM - GRAND ARRIVAL</span>
+        </div>
+
+        <!-- Title in Elegant Serif Font -->
+        <h3 class="m-countdown-title">
+          <span class="lang-mr">सह्याद्रीच्या राजाचे आगमन</span>
+          <span class="lang-en">ARRIVAL OF SAHYADRI CHA RAJA</span>
+        </h3>
+
+        <!-- 4 Separate Transparent Timer Units with Gold Borders -->
+        <div class="m-timer-grid">
+          <div class="m-timer-box">
+            <span class="m-timer-val mobile-count-val" data-timer="days">08</span>
+            <span class="m-timer-label">
+              <span class="lang-mr">दिवस</span><span class="lang-en">DAYS</span>
+            </span>
+          </div>
+
+          <div class="m-timer-box">
+            <span class="m-timer-val mobile-count-val" data-timer="hours">22</span>
+            <span class="m-timer-label">
+              <span class="lang-mr">तास</span><span class="lang-en">HOURS</span>
+            </span>
+          </div>
+
+          <div class="m-timer-box">
+            <span class="m-timer-val mobile-count-val" data-timer="mins">10</span>
+            <span class="m-timer-label">
+              <span class="lang-mr">मिनिटे</span><span class="lang-en">MINS</span>
+            </span>
+          </div>
+
+          <div class="m-timer-box">
+            <span class="m-timer-val mobile-count-val" data-timer="secs">50</span>
+            <span class="m-timer-label">
+              <span class="lang-mr">सेकंद</span><span class="lang-en">SECS</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Dot Indicators -->
+    <div class="hero-carousel-dots">
+      <div class="carousel-dot active" data-slide="0"></div>
+      <div class="carousel-dot" data-slide="1"></div>
+      <div class="carousel-dot" data-slide="2"></div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 4: NEWS & ANNOUNCEMENT TICKER STRIP -->
+  <div class="marquee-ticker-wrap">
+    <span class="marquee-ticker-badge">
+      <span class="lang-mr">उत्सव अपडेट्स</span><span class="lang-en">FESTIVAL UPDATES</span>
+    </span>
+    <div class="marquee-ticker-content">
+      <span class="lang-mr">🌸 १२ सप्टेंबर सायंकाळी ५:०० वाजता सह्याद्रीच्या राजाचे भव्य आगमन सोहळा! (७.५ फूट नयनरम्य श्रींची मूर्ती) • रोज सकाळी ८ आणि संध्याकाळी ८ महाआरती • ५०,०००+ महाप्रसाद वाटप • ८०G कर सवलत देणगी उपलब्ध 🌸</span>
+      <span class="lang-en">🌸 Grand Arrival of Sahyadri Cha Raja on 12th September at 5:00 PM! (7.5 Feet Majestic Idol) • Daily Maha Aarti Morning 8:00 AM & Evening 8:00 PM • 50,000+ Daily Annadan Mahaprasad • 80G Tax Exempt Donations Open 🌸</span>
+    </div>
+  </div>
+
+  <!-- SECTION 5: PRESIDENT'S MESSAGE -->
+  <div class="main-content-gradient">
+  <section style="padding: 6rem 0;">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 4rem;">
+        <div>
+          <span class="section-badge">
+            <span class="lang-mr">अध्यक्ष व कार्यकारिणी संदेश</span>
+            <span class="lang-en">President & Executive Message</span>
+          </span>
+          <h2 class="section-title fit-text-heading" data-max-size="40" style="max-width: 100%; box-sizing: border-box; margin-top: 0.5rem; line-height: 1.3;">
+            <span class="lang-mr">दिव्य आशीर्वादांचा स्वीकार करा</span>
+            <span class="lang-en">Embrace the Divine Blessings</span>
+          </h2>
+          <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 1.5rem;">
+            <span class="lang-mr">सह्याद्री क्रीडा मंडळाच्या या नवीन डिजिटल मंदिर स्वरूपातून दिव्य ऊर्जेचा अनुभव घ्या.</span>
+            <span class="lang-en">Experience the divine aura of Sahyadri Krida Mandal through our newly reimagined digital temple experience.</span>
+          </p>
+
+          <!-- Pull Quote Style Emphasis -->
+          <blockquote
+            style="border-left: 4px solid #C9A227; padding-left: 1.2rem; margin: 1.5rem 0; font-family: var(--font-mr-head); font-size: 1.25rem; color: #6B1414; font-style: italic;">
+            <span class="lang-mr">"भक्तीची पाळेमुळे, सेवेचे व्रत आणि सांस्कृतिक वारशाने एकत्र बांधलेले आपले सह्याद्री क्रीडा मंडळ."</span>
+            <span class="lang-en">"Rooted in devotion, driven by service, and united by our shared cultural heritage."</span>
+          </blockquote>
+
+            <div
+              style="display: flex; gap: 1.5rem; border-left: 3px solid var(--royal-gold); padding-left: 1.5rem; background: rgba(212, 175, 55, 0.05); padding: 1.2rem 1.5rem; border-radius: var(--radius-sm);">
+              <div>
+                <h4 style="margin: 0; color: var(--temple-maroon); font-size: 1.15rem;">
+                  <span class="lang-mr">राहुल जी. वाळंज</span><span class="lang-en">Rahul G. Walanj</span>
+                </h4>
+                <p style="margin: 0; font-size: 0.88rem; color: var(--primary-saffron); font-weight: 700;">
+                  <span class="lang-mr">अध्यक्ष</span><span class="lang-en">President</span>
+                </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="president-photo-wrapper" style="position: relative; display: flex; justify-content: center;">
+          <div class="gold-motion-frame" style="border-width: 4px; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2); max-width: 400px; width: 100%; border-radius: var(--radius-lg); background: linear-gradient(135deg, rgba(201,162,39,0.1), rgba(10,10,10,0.8));">
+            <img src="/images/president.png" alt="President - Sahyadri Krida Mandal"
+              style="width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: top center; display: block; border-radius: calc(var(--radius-lg) - 4px);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CHAPTER IV: LEGACY & DEVOTION
+     ========================================================================== -->
+  <section style="padding: 6rem 0;">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 4rem;">
+        <div class="gold-motion-frame" style="height: 480px;">
+          <img src="/images/sahyadri-decoration-cave.jpg" alt="Sahyadri Krida Mandal Peshwa Craft"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;">
+        </div>
+
+        <div>
+          <span class="section-badge">
+            <span class="lang-mr">राजेशाही पेहराव व मूर्तिकला</span><span class="lang-en">Royal Attire & Sculptural Art</span>
+          </span>
+          <h2 class="section-title fit-text-heading" data-max-size="38" style="white-space: nowrap; max-width: 100%; box-sizing: border-box; display: inline-block;">
+            <span class="lang-mr">२४ फुटांचे दिव्य रूप आणि सुवर्ण साज</span>
+            <span class="lang-en">24-Foot Divine Grandeur & Golden Splendor</span>
+          </h2>
+          <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 1.5rem;">
+            <span class="lang-mr">२४ फूट भव्य स्वरूप, सह्याद्री क्रीडा मंडळाच्या बाप्पांचे विलोभनीय हास्य आणि तेजस्वी नयन देश-विदेशातील लाखो भाविकांना भुरळ घालतात.</span>
+            <span class="lang-en">Standing an awe-inspiring 24 feet tall, the benevolent smile and radiant presence of Lord Ganesha at Sahyadri Krida Mandal captivate millions of visiting devotees.</span>
+          </p>
+          <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 0;">
+            <span class="lang-mr">भव्य कोरीव सुवर्ण सिंहासनावर विराजमान होणारे श्रींचे रूप दरवर्षी महाराष्ट्राच्या वैभवशाली सांस्कृतिक व ऐतिहासिक संकल्पनांवर आधारीत अत्यंत मनमोहकपणे साकारले जाते.</span>
+            <span class="lang-en">Gracefully seated upon intricately carved golden and royal thrones, the sacred idol is sculpted each year to celebrate Maharashtra’s rich cultural heritage and grand historical themes.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+     CHAPTER VI: CELEBRATION (Glimpses Gallery)
+     ========================================================================== -->
+  <section style="padding: 6rem 0;">
+    <div class="container">
+      <!-- Animated Stat Counter Row -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 800px; margin: 0 auto 4.5rem auto; gap: 1.5rem;">
+        <div class="stat-counter-card">
+          <div class="stat-num-value" data-target="1976" data-no-comma="true">1976</div>
+          <div class="stat-label-text">
+            <span class="lang-mr">स्थापना वर्ष</span><span class="lang-en">Founding Year</span>
+          </div>
+        </div>
+        <div class="stat-counter-card">
+          <div class="stat-num-value" data-target="50">50</div>
+          <div class="stat-label-text">
+            <span class="lang-mr">अविरत सेवेची वर्षे</span><span class="lang-en">Years of Continuous Service</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <span class="section-badge">
+          <span class="lang-mr">ऐतिहासिक सुवर्ण क्षण</span><span class="lang-en">HISTORIC GOLDEN MOMENTS</span>
+        </span>
+        <h2 class="section-title">
+          <span class="lang-mr">दशकातील प्रवास</span><span class="lang-en">Glimpses Over The Years</span>
+        </h2>
+        <div class="gold-divider"></div>
+      </div>
+
+
+
+      <!-- 3D Crazy Scroll Reel -->
+      <div class="crazy-reel-wrapper">
+        <button class="crazy-reel-nav-btn prev" aria-label="Previous Slide">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="crazy-reel-container">
+          <% (typeof glimpsesData !=='undefined' ? glimpsesData : []).forEach(item=> { %>
+            <div class="crazy-reel-card gold-motion-frame gallery-card-item" data-category="<%= item.category %>"
+              data-lightbox data-lightbox-src="<%= item.image %>"
+              data-lightbox-title="<%= item.titleMr || item.title %> (Year <%= item.year %>)" data-lightbox-title-mr="<%= item.titleMr || item.title %> (वर्ष <%= item.year %>)" data-lightbox-title-en="<%= item.titleEn || item.title %> (Year <%= item.year %>)" data-lightbox-caption="<%= item.descMr || item.desc %>" data-lightbox-caption-mr="<%= item.descMr || item.desc %>" data-lightbox-caption-en="<%= item.descEn || item.desc %>">
+              <div class="card-img-box">
+                <img src="<%= item.image %>" alt="<%= item.title %>" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%;">
+                <div class="year-badge"><span class="lang-mr">वर्ष</span><span class="lang-en">Year</span> <%= item.year %>
+                </div>
+                <div class="enlarge-hint">
+                  <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--royal-gold); margin-right: 4px;"></i>
+                  <span class="lang-mr">झूम करा</span><span class="lang-en">Zoom Image</span>
+                </div>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-mr="<%= item.titleMr || item.title %>" data-en="<%= item.titleEn || item.title %>">
+                  <%= item.titleMr || item.title %>
+                </h4>
+                <p class="card-subtitle" data-mr="<%= item.themeMr || item.theme %>" data-en="<%= item.themeEn || item.theme %>">
+                  <%= item.themeMr || item.theme %>
+                </p>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+
+        <button class="crazy-reel-nav-btn next" aria-label="Next Slide">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/photo-booth" class="btn btn-primary">
+          <span class="lang-mr">संपूर्ण प्रवास पहा</span><span class="lang-en">View All Retrospective</span> <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section style="padding: 3rem 0; overflow: hidden;">
+    <style>
+      @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      @keyframes scroll-right {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
+      .img-marquee {
+        height: 300px; 
+        display: inline-block; 
+        margin: 0 1rem; 
+        border-radius: var(--radius-sm); 
+        border: 2px solid var(--royal-gold); 
+        box-shadow: var(--shadow-sm);
+      }
+      .marquee-track-right {
+        display: flex;
+        width: max-content;
+        animation: scroll-right 20s linear infinite;
+      }
+      .marquee-track-left {
+        display: flex;
+        width: max-content;
+        animation: scroll-left 20s linear infinite;
+      }
+    </style>
+    
+    <div style="overflow: hidden; margin-bottom: 1rem;">
+      <div class="marquee-track-right">
+        <img src="/images/sahyadri-decoration-temple.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-night.jpg" class="img-marquee">
+        <img src="/images/sahyadri-ganpati-02.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-night.jpg" class="img-marquee">
+        <img src="/images/sahyadri-ganpati-01.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-temple.jpg" class="img-marquee">
+        
+        <img src="/images/sahyadri-decoration-temple.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-night.jpg" class="img-marquee">
+        <img src="/images/sahyadri-ganpati-02.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-night.jpg" class="img-marquee">
+        <img src="/images/sahyadri-ganpati-01.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-temple.jpg" class="img-marquee">
+      </div>
+    </div>
+  
+    <div style="overflow: hidden;">
+      <div class="marquee-track-left">
+        <img src="/images/sahyadri-decoration-cave.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-palace.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-lights.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-palace.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-night.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-cave.jpg" class="img-marquee">
+        <img src="/images/sahyadri-ganpati-01.jpg" class="img-marquee">
+        
+        <img src="/images/sahyadri-decoration-cave.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-palace.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-lights.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-palace.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-night.jpg" class="img-marquee">
+        <img src="/images/sahyadri-decoration-cave.jpg" class="img-marquee">
+        <img src="/images/sahyadri-ganpati-01.jpg" class="img-marquee">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     CHAPTER IX: PILGRIMAGE & LOCATION
+     ========================================================================== -->
+  <section style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">
+          <span class="lang-mr">मंडप स्थान व संपर्क</span><span class="lang-en">MANDAP LOCATION & CONTACT</span>
+        </span>
+        <h2 class="section-title">
+          <span class="lang-mr">मंडप दर्शन स्थान व नकाशा</span><span class="lang-en">Mandap Darshan Location & Map</span>
+        </h2>
+        <p class="section-subtitle">
+          <span class="lang-mr">टिळक नगर समाज मंदिर सभागृह, लोकमान्य टिळक क्रीडांगण, इमारत २२ समोर, टिळक नगर, चेंबूर, मुंबई- ४०००८९.</span>
+          <span class="lang-en">Tilak Nagar Samaj Mandir Auditorium, opposite Building 22, Lokmanya Tilak Kridangan, Tilak Nagar, Chembur, Mumbai - 400089.</span>
+        </p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="grid-2" style="align-items: center; gap: 3rem;">
+        <div
+          style="background: #FFFFFF; border: 2px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--temple-maroon); font-size: 1.6rem; margin-bottom: 1.2rem;">
+            <span class="lang-mr">संपर्क माहिती</span><span class="lang-en">Contact Information</span>
+          </h3>
+          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+            <i class="fa-solid fa-location-dot" style="color: var(--primary-saffron); margin-right: 10px;"></i>
+            <span class="lang-mr">टिळक नगर समाज मंदिर सभागृह, लोकमान्य टिळक क्रीडांगण, इमारत २२ समोर, टिळक नगर, चेंबूर, मुंबई- ४०००८९.</span>
+            <span class="lang-en">Tilak Nagar Samaj Mandir Auditorium, opposite Building 22, Lokmanya Tilak Kridangan, Tilak Nagar, Chembur, Mumbai - 400089.</span>
+          </p>
+          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+            <i class="fa-solid fa-file-shield" style="color: var(--primary-saffron); margin-right: 10px;"></i>
+            <span class="lang-mr"></span>
+            <span class="lang-en"></span>
+          </p>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="https://www.youtube.com/@sahyadrikridamandal.r" target="_blank" rel="noopener noreferrer"
+              class="btn btn-outline" style="font-size: 0.85rem;">
+              <i class="fa-brands fa-youtube" style="color: #FF0000; margin-right: 6px;"></i> YouTube
+            </a>
+            <a href="https://www.facebook.com/sahyadrikridamandal.r/" target="_blank" rel="noopener noreferrer" class="btn btn-outline"
+              style="font-size: 0.85rem;">
+              <i class="fa-brands fa-facebook" style="color: #1877F2; margin-right: 6px;"></i> Facebook
+            </a>
+          </div>
+        </div>
+
+        <div
+          style="height: 380px; border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--royal-gold); box-shadow: var(--shadow-md);">
+          <iframe
+            src="https://www.google.com/maps?q=Bhaji+Galli%2C+Shankar+Sheth+Road%2C+Grant+Road%2C+Mumbai-400007&output=embed"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const headings = document.querySelectorAll(".fit-text-heading");
+      
+      const adjustFontSize = (heading) => {
+        const parent = heading.parentElement;
+        if (!parent) return;
+
+        // Reset to max size to measure
+        const maxSize = parseFloat(heading.getAttribute('data-max-size') || 40);
+        let currentSize = maxSize;
+        heading.style.fontSize = currentSize + 'px';
+
+        // Available width in the parent container
+        const availableWidth = parent.clientWidth - parseFloat(getComputedStyle(parent).paddingLeft) - parseFloat(getComputedStyle(parent).paddingRight);
+        
+        // Loop down until it fits
+        while (heading.scrollWidth > availableWidth && currentSize > 10) {
+          currentSize -= 0.5;
+          heading.style.fontSize = currentSize + 'px';
+        }
+      };
+
+      const observer = new ResizeObserver(entries => {
+        for (let entry of entries) {
+          headings.forEach(adjustFontSize);
+        }
+      });
+
+      headings.forEach(heading => {
+        if (heading.parentElement) observer.observe(heading.parentElement);
+        adjustFontSize(heading);
+      });
+      
+      // Also adjust on language change if it affects string length
+      const langBtns = document.querySelectorAll('.lang-btn');
+      langBtns.forEach(btn => btn.addEventListener('click', () => {
+        setTimeout(() => headings.forEach(adjustFontSize), 50);
+      }));
+    });
+  </script>
+
+  <%- include('partials/footer') %>
